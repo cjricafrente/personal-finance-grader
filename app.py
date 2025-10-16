@@ -34,7 +34,7 @@ st.subheader("💾 Save to AWS (optional)")
 
 use_aws = st.checkbox("Save my data to AWS S3")
 if use_aws:
-    bucket_name = st.text_input("S3 Bucket Name", "finance-grader-data-yourname")
+    bucket_name = st.text_input("S3 Bucket Name", "finance-grader-data-cjdr")
     aws_access_key = st.text_input("AWS Access Key ID", type="password")
     aws_secret_key = st.text_input("AWS Secret Access Key", type="password")
 
