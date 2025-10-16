@@ -110,27 +110,35 @@ def evaluate_finance_grade(record, education_level=None):
     return out
 
 def save_to_s3(record, result, bucket_name, aws_access_key, aws_secret_key):
-    """Save user's finance record + evaluation to S3."""
+    """
+    Uploads the finance evaluation result to AWS S3 as a JSON file.
+    """
     try:
+        # Create an S3 client
         s3 = boto3.client(
             "s3",
             aws_access_key_id=aws_access_key,
-            aws_secret_access_key=aws_secret_key,
-            region_name="ap-southeast-1"
+            aws_secret_access_key=aws_secret_key
         )
-        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        filename = f"user-records/finance_{timestamp}.json"
-        data = {
-            "input": record,
-            "evaluation": result
+
+        # Construct the object name (filename)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        object_key = f"finance_records/{timestamp}.json"
+
+        # Combine record + result
+        upload_data = {
+            "record": record,
+            "result": result
         }
-        s3.put_object(
-            Bucket=bucket_name,
-            Key=filename,
-            Body=json.dumps(data, indent=2),
-            ContentType="application/json"
-        )
-        return f"✅ Saved to S3 as {filename}"
+
+        # Convert to JSON string
+        json_data = json.dumps(upload_data, indent=4)
+
+        # Upload to S3
+        s3.put_object(Bucket=bucket_name, Key=object_key, Body=json_data)
+
+        return f"✅ Successfully uploaded to S3 bucket: {bucket_name}/{object_key}"
+
     except Exception as e:
-        return f"⚠️ Error saving to S3: {e}"
+        return f"❌ Failed to upload: {str(e)}"
 
