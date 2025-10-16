@@ -22,10 +22,10 @@ education_level = st.selectbox(
 # When user clicks evaluate
 if st.button("Evaluate My Finance Grade (Suriin ang Aking Antas sa Pananalapi)"):
     record = {
-        "monthly_income_php_adj": monthly_income,
-        "monthly_expenses_php_adj": monthly_expenses,
-        "savings_php_adj": savings,
-        "loan_amount_php_adj": loan_amount,
+        "monthly_income": monthly_income,
+        "monthly_expenses": monthly_expenses,
+        "savings": savings,
+        "loan_amount": loan_amount,
     }
 
     result = evaluate_finance_grade(record, education_level)
