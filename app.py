@@ -28,7 +28,7 @@ if st.button("Evaluate My Finance Grade (Suriin ang Aking Antas sa Pananalapi)")
         "loan_amount_php_adj": loan_amount,
     }
 
-    result = analyze_finance_record(record, education_level)
+    result = evaluate_finance_grade(record, education_level)
     score = result["finance_score"]
 
     # Bilingual finance grade feedback
