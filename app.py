@@ -4,7 +4,7 @@ from src.finance_utils import evaluate_finance_grade
 st.set_page_config(page_title="Personal Finance Grader", page_icon="💰")
 
 # Title
-st.title("💰 Personal Finance Grader (Tagalog-English)")
+st.title("💰 Personal Finance Grader")
 
 st.write("Discover how well you're managing your finances!")
 
