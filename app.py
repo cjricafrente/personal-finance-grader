@@ -1,5 +1,12 @@
+import sys
+import os
+
+# --- Add this to help Streamlit find your src folder ---
+sys.path.append(os.path.abspath("src"))
+
+from finance_utils import evaluate_finance_grade
 import streamlit as st
-from src.finance_utils import evaluate_finance_grade
+
 
 st.set_page_config(page_title="Personal Finance Grader", layout="centered")
 
