@@ -24,33 +24,53 @@ def compute_metrics(monthly_income, monthly_expenses, savings, loan_amount, reco
     }
 
 def compute_finance_score(metrics, education_level=None):
-    sr = metrics.get("savings_rate", 0)
-    er = metrics.get("expense_ratio", 100)
-    lir = metrics.get("loan_to_income_ratio", 0)
-    comp_savings = sr * 0.4
-    comp_expense = (100 - er) * 0.3
-    loan_component_raw = max(0, 100 - (lir * 0.5))
-    comp_loan = loan_component_raw * 0.3
+    """Compute a realistic personal finance score and grade."""
+
+    # Extract key ratios
+    sr = metrics.get("savings_rate", 0)               # % of income saved
+    er = metrics.get("expense_ratio", 100)            # % of income spent
+    lir = metrics.get("loan_to_income_ratio", 0)      # % of income borrowed
+
+    # --- Weight components more fairly ---
+    # Savings → Strongly rewarded
+    comp_savings = min(sr, 50) * 0.5  # max 25 points
+
+    # Expenses → Lower = better
+    comp_expense = max(0, (100 - er)) * 0.3  # max 30 points
+
+    # Loan → Lower = better
+    comp_loan = max(0, (100 - min(lir, 100))) * 0.2  # max 20 points
+
+    # Combine the three components
     base_score = comp_savings + comp_expense + comp_loan
-    score = max(0, min(100, round(base_score, 2)))
+
+    # Normalize score to stay within 0–100
+    score = max(0, min(100, round(base_score * 1.2, 2)))
+
+    # --- Education Level Bonus ---
     edu = (education_level or "").strip().lower()
     if edu in ("high school", "senior high", "hs"):
         score += 3
     elif edu in ("college", "undergrad", "bachelor"):
-        score += 0
+        score += 5
     elif edu in ("masters", "postgrad", "graduate"):
-        score += 2
-    score = max(0, min(100, round(score,2)))
-    if score >= 85:
+        score += 7
+
+    # Cap to 100
+    score = max(0, min(100, round(score, 2)))
+
+    # --- Assign Grades ---
+    if score >= 90:
         grade = "A"
-    elif score >= 70:
+    elif score >= 75:
         grade = "B"
-    elif score >= 55:
+    elif score >= 60:
         grade = "C"
-    elif score >= 40:
+    elif score >= 45:
         grade = "D"
     else:
         grade = "E"
+
     return {"score": score, "grade": grade}
 
 def evaluate_finance_grade(record, education_level=None):
