@@ -1,5 +1,10 @@
 
 # finance_utils.py
+import boto3
+import json
+import datetime
+import os
+
 from pathlib import Path
 
 def compute_metrics(monthly_income, monthly_expenses, savings, loan_amount, record_year=None):
@@ -103,8 +108,6 @@ def evaluate_finance_grade(record, education_level=None):
         "recommendations": recs
     }
     return out
-
-import boto3, json, datetime, os
 
 def save_to_s3(record, result, bucket_name, aws_access_key, aws_secret_key):
     """Save user's finance record + evaluation to S3."""
