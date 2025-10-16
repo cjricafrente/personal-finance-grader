@@ -29,6 +29,19 @@ if st.button("Evaluate My Finance Grade (Suriin ang Aking Antas sa Pananalapi)")
         "loan_amount": loan_amount,
         "record_year": record_year
     }
+    # Optional AWS save section
+st.subheader("💾 Save to AWS (optional)")
+
+use_aws = st.checkbox("Save my data to AWS S3")
+if use_aws:
+    bucket_name = st.text_input("S3 Bucket Name", "finance-grader-data-yourname")
+    aws_access_key = st.text_input("AWS Access Key ID", type="password")
+    aws_secret_key = st.text_input("AWS Secret Access Key", type="password")
+
+    if st.button("Upload to S3"):
+        from src.finance_utils import save_to_s3
+        status = save_to_s3(record, result, bucket_name, aws_access_key, aws_secret_key)
+        st.info(status)
 
     result = evaluate_finance_grade(record, education_level)
     score = result["score"]
