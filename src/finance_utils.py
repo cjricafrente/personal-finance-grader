@@ -103,3 +103,31 @@ def evaluate_finance_grade(record, education_level=None):
         "recommendations": recs
     }
     return out
+
+import boto3, json, datetime, os
+
+def save_to_s3(record, result, bucket_name, aws_access_key, aws_secret_key):
+    """Save user's finance record + evaluation to S3."""
+    try:
+        s3 = boto3.client(
+            "s3",
+            aws_access_key_id=aws_access_key,
+            aws_secret_access_key=aws_secret_key,
+            region_name="ap-southeast-1"
+        )
+        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        filename = f"user-records/finance_{timestamp}.json"
+        data = {
+            "input": record,
+            "evaluation": result
+        }
+        s3.put_object(
+            Bucket=bucket_name,
+            Key=filename,
+            Body=json.dumps(data, indent=2),
+            ContentType="application/json"
+        )
+        return f"✅ Saved to S3 as {filename}"
+    except Exception as e:
+        return f"⚠️ Error saving to S3: {e}"
+
