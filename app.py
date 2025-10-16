@@ -26,6 +26,7 @@ if st.button("Evaluate My Finance Grade (Suriin ang Aking Antas sa Pananalapi)")
         "monthly_expenses": monthly_expenses,
         "savings": savings,
         "loan_amount": loan_amount,
+        "record_year": record_year
     }
 
     result = evaluate_finance_grade(record, education_level)
