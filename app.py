@@ -30,12 +30,14 @@ if st.button("Evaluate My Finance Grade (Suriin ang Aking Antas sa Pananalapi)")
 
     result = evaluate_finance_grade(record, education_level = education_level)
 
-    st.subheader(f"🏅 Your Grade: {result['grade']}")
-    st.write(f"**Score:** {result['score']:.2f}")
-
-    st.write("### 💡 Recommendations")
-    for rec in result["recommendations"]:
-        st.write(f"- {rec}")
+# Bilingual finance grade feedback
+    st.subheader("Your Finance Grade (Ang Iyong Antas sa Pananalapi):")
+    if score >= 85:
+        st.success("Excellent financial health! (Magandang kalagayang pinansyal!) 🌟")
+    elif score >= 70:
+        st.info("Good, but there’s room for improvement. (Maganda pero may puwang pa para umangat.) 💡")
+    else:
+        st.warning("Be careful — you might be overspending! (Mag-ingat — baka sobra ang gastos!) ⚠️")
 
     # Show details
     st.write("### Financial Details (Mga Detalye ng Pananalapi)")
