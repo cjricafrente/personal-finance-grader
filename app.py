@@ -1,5 +1,5 @@
 import streamlit as st
-from src.finance_utils import analyze_finance_record
+from src.finance_utils import evaluate_finance_grade
 
 st.set_page_config(page_title="Personal Finance Grader", page_icon="💰")
 
