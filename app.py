@@ -18,6 +18,7 @@ education_level = st.selectbox(
     "Education Level (Antas ng Edukasyon)",
     ["None", "High School", "College", "Graduate"]
 )
+record_year = st.number_input("Record Year", min_value=2020, max_value=2030, value=2025)
 
 # When user clicks evaluate
 if st.button("Evaluate My Finance Grade (Suriin ang Aking Antas sa Pananalapi)"):
