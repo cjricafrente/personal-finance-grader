@@ -53,7 +53,7 @@ def compute_finance_score(metrics, education_level=None):
         grade = "E"
     return {"score": score, "grade": grade}
 
-def analyze_finance_record(record, education_level=None):
+def evaluate_finance_grade(record, education_level=None):
     metrics = compute_metrics(
         record.get("monthly_income"),
         record.get("monthly_expenses"),
