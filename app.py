@@ -29,7 +29,7 @@ if st.button("Evaluate My Finance Grade (Suriin ang Aking Antas sa Pananalapi)")
     }
 
     result = evaluate_finance_grade(record, education_level)
-    score = result["compute_finance_score"]
+    score = result["compute_metrics"]
 
     # Bilingual finance grade feedback
     st.subheader("Your Finance Grade (Ang Iyong Antas sa Pananalapi):")
