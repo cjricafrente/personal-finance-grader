@@ -122,7 +122,7 @@ def save_to_s3(record, result, bucket_name, aws_access_key, aws_secret_key):
         )
 
         # Construct the object name (filename)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         object_key = f"finance_records/{timestamp}.json"
 
         # Combine record + result
