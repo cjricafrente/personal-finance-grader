@@ -1,11 +1,11 @@
-#Personal Finance Grader
+## Personal Finance Grader
 Data-Driven Financial Health Evaluator (Streamlit + AWS)
 
 Author: Carl Joshua Ricafrente
 Date: October 2025
 Tech Stack: Python, Streamlit, AWS S3, boto3, JSON
 
-#Overview
+## Overview
 
 Personal Finance Grader is an interactive data app that evaluates an individual's financial health based on their income, expenses, savings, and loans.
 
@@ -19,7 +19,7 @@ Optional AWS S3 integration for securely saving results to the cloud
 
 This project demonstrates end-to-end data workflow skills — from user input and metric computation, to analysis, visualization, and cloud data engineering integration.
 
-#Features
+## Features
 Category	Description
 💹 Financial Analytics	Calculates savings rate, expense ratio, loan-to-income ratio, and net balance.
 🧮 Scoring Logic	Generates a financial health score and letter grade.
@@ -36,7 +36,7 @@ Cloud Storage: AWS S3 (via boto3)
 
 Data Format: JSON
 
-#How It Works
+## How It Works
 
 Input Financial Data
 
@@ -64,7 +64,7 @@ personal-finance-grader/
     ├── __init__.py
     └── finance_utils.py        # Core financial logic + AWS upload function
 
-#Setup Instructions
+## Setup Instructions
 1️⃣ Clone the Repository
 git clone https://github.com/cjricafrente/personal-finance-grader.git
 cd personal-finance-grader
@@ -85,7 +85,7 @@ Get your Access Key ID and Secret Access Key
 
 Enter them inside the Streamlit app when prompted
 
-#Example Output
+## Example Output
 
 Input
 
@@ -117,7 +117,7 @@ Output
   ]
 }
 
-#Cloud Integration
+## Cloud Integration
 
 This project integrates with AWS S3 for secure and scalable data storage.
 All records are uploaded as timestamped JSON files using the AWS SDK (boto3).
@@ -125,7 +125,7 @@ Example filename:
 
 finance-record-2025-10-16-13-42-21.json
 
-#Future Improvements
+## Future Improvements
 
 This project is designed for continuous enhancement. Planned updates include:
 
@@ -139,8 +139,7 @@ This project is designed for continuous enhancement. Planned updates include:
 
 💾 Athena integration for SQL-based analytics
 
-
-#Links
+## Links
 GitHub Repository: https://github.com/cjricafrente/personal-finance-grader
 
 Author: LinkedIn: Carl Joshua Ricafrente
