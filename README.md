@@ -21,12 +21,12 @@ This project demonstrates end-to-end data workflow skills — from user input an
 
 ## Features
 Category	Description
-💹 Financial Analytics	Calculates savings rate, expense ratio, loan-to-income ratio, and net balance.
-🧮 Scoring Logic	Generates a financial health score and letter grade.
-💬 Recommendations	Provides personalized insights in both English and Filipino.
-☁️ AWS Integration	Uploads user results to AWS S3 for cloud data storage.
-🧩 Modular Design	Python functions are modular and reusable for ML or dashboard extensions.
-⚙️ Tech Stack
+- Financial Analytics	Calculates savings rate, expense ratio, loan-to-income ratio, and net balance.
+- Scoring Logic	Generates a financial health score and letter grade.
+- Recommendations	Provides personalized insights in both English and Filipino.
+- AWS Integration	Uploads user results to AWS S3 for cloud data storage.
+- Modular Design	Python functions are modular and reusable for ML or dashboard extensions.
+- Tech Stack
 
 Frontend: Streamlit (interactive user interface)
 
@@ -65,17 +65,17 @@ personal-finance-grader/
     └── finance_utils.py        # Core financial logic + AWS upload function
 
 ## Setup Instructions
-1️⃣ Clone the Repository
+1.  Clone the Repository
 git clone https://github.com/cjricafrente/personal-finance-grader.git
 cd personal-finance-grader
 
-2️⃣ Install Dependencies
+2️. Install Dependencies
 pip install -r requirements.txt
 
-3️⃣ Run the App
+3️. Run the App
 streamlit run app.py
 
-4️⃣ (Optional) Connect AWS
+4️. (Optional) Connect AWS
 
 If you want to store results in S3:
 
@@ -129,15 +129,15 @@ finance-record-2025-10-16-13-42-21.json
 
 This project is designed for continuous enhancement. Planned updates include:
 
-📈 Predictive modeling for financial trend analysis
+- Predictive modeling for financial trend analysis
 
-🧠 Integration with ML models for automated financial advice
+- Integration with ML models for automated financial advice
 
-📊 Streamlit dashboard for aggregated insights
+- Streamlit dashboard for aggregated insights
 
-🛡️ Enhanced AWS security using IAM roles and environment variables
+- Enhanced AWS security using IAM roles and environment variables
 
-💾 Athena integration for SQL-based analytics
+- Athena integration for SQL-based analytics
 
 ## Links
 GitHub Repository: https://github.com/cjricafrente/personal-finance-grader
